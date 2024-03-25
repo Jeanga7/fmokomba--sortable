@@ -3,7 +3,7 @@ const searchInput = document.querySelector('#searchInput');
 const heroTable = document.querySelector('#heroTable');
 
 let pageSize = parseInt(pageSizeSelect.value);
-let searchData = [];
+let allHeroes = [];
 
 function fetchData() {
     fetch('https://rawcdn.githack.com/akabab/superhero-api/0.2.0/api/all.json')
@@ -24,7 +24,7 @@ function fetchData() {
                 placeOfBirth: hero.biography.placeOfBirth,
                 alignment: hero.biography.alignment
             }));
-            renderTable(allHeroes);
+            handlePageSizeChange(allHeroes);
         });
 }
 
@@ -81,19 +81,25 @@ function renderTable(data) {
     });
 }
 
-function handlePageSizeChange() {
+function handlePageSizeChange(searchData) {
     pageSize = parseInt(pageSizeSelect.value);
-    renderTable(searchData.slice(0, pageSize));
+    const searchDataArray = Object.values(searchData);
+    renderTable(searchDataArray.slice(0, pageSize));
 }
 
-function handleSearchInput() {
+
+function handleSearchInput(searchData) {
     const filteredData = searchData.filter(hero => {
         return hero.name.toLowerCase().includes(searchInput.value.toLowerCase());
     });
     renderTable(filteredData);
 }
 
-pageSizeSelect.addEventListener('change', handlePageSizeChange);
-searchInput.addEventListener('input', handleSearchInput);
+pageSizeSelect.addEventListener('change',() => {
+    handlePageSizeChange(allHeroes)
+});
+searchInput.addEventListener('input', () => {
+    handleSearchInput(allHeroes)
+});
 
 fetchData();

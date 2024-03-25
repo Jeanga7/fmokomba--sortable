@@ -8,16 +8,21 @@
 </head>
 <body>
     <header>
-        <h1>Superhero Database</h1>
-        <label for="pageSize">Page Size:</label>
-        <select id="pageSize">
-            <option value="10">10</option>
-            <option value="20" selected>20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="all">All</option>
-        </select>
-        <input type="text" id="searchInput" placeholder="Search...">
+        <div id="selectBox">
+            <label for="pageSize">Page Size:</label>
+            <select id="pageSize">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="563">All</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        <div id="logo">
+            <img src="./logo.png" alt="logo" class="logo">
+            <h1>SuperHero Database</h1>
+        </div>
     </header>
     <main>
         <table id="heroTable">
