@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhero Database</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Superhero Database</h1>
+        <label for="pageSize">Page Size:</label>
+        <select id="pageSize">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="all">All</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search...">
+    </header>
+    <main>
+        <table id="heroTable">
+            <!-- ce qu'on va ajouter avec js -->
+        </table>
+    </main>
+    <script src="sortable.js"></script>
+</body>
+</html>
