@@ -59,7 +59,12 @@ function renderTable(data) {
                     if (Array.isArray(value)) {
                         td.textContent = value.join(', ');
                     } else if (typeof value === 'object' && !Array.isArray(value)) {
-                        td.textContent = Object.values(value).join(', ');
+                        const formattedObject = {};
+                        for (const propri in value) {
+                            formattedObject[propri] = `${propri}:${value[propri]}\n`;
+                        }
+                        const formattedValues = Object.values(formattedObject);
+                        td.textContent = formattedValues.join(' ');
                     } else if (typeof value === 'string' && value.startsWith('http')) {
                         // il faut creer la balise img pour afficher l'image
                         const img = document.createElement('img');
@@ -95,7 +100,7 @@ function handleSearchInput(searchData) {
     renderTable(filteredData);
 }
 
-pageSizeSelect.addEventListener('change',() => {
+pageSizeSelect.addEventListener('change', () => {
     handlePageSizeChange(allHeroes)
 });
 searchInput.addEventListener('input', () => {
